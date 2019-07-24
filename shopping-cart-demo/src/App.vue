@@ -45,22 +45,28 @@ export default {
   },
   methods:{
     addCourseToList(){
-      this.courseList.push(this.courseInfo)
+        this.courseList.push(this.courseInfo)
     },
     addCourseToCart(index){
-      this.courseCart.push(this.courseList[index])
-      console.log(this.courseCart)
-      //alert('添加购物车')
+        let item = this.courseList[index];
+        let isHasCourse = this.courseCart.find(x => x.id == item.id);
+        if(isHasCourse){
+            isHasCourse.number += 1;
+        }
+        else{
+            this.courseCart.push({
+                ...item,
+                number: 1,
+                isActive: true,
+            })
+        }
+      // this.courseCart.push(this.courseList[index])
     }
   },
   data : () => {
     return {
       title: '55555',
       courseCart:[
-        {
-          name: '1',
-          price: '22',
-        }
       ],
       courseInfo:[
         {
@@ -91,7 +97,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
