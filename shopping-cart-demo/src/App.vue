@@ -30,11 +30,13 @@
         </tr>
       </table>
     </div>
-    <cart :courseCart="courseCart"></cart>
+    <cart :courseCart="courseCart" v-on:removeItem="remove"></cart>
   </div>
 </template>
 
 <script>
+  /* eslin -disable */
+
 // import HelloWorld from './components/HelloWorld.vue'
 import Cart from  './components/Cart.vue'
 export default {
@@ -44,6 +46,11 @@ export default {
     Cart
   },
   methods:{
+    remove(index) {
+      // 删除最后一条数据
+      this.courseCart.splice(index,1)
+      // console.log(index)
+    },
     addCourseToList(){
         this.courseList.push(this.courseInfo)
     },

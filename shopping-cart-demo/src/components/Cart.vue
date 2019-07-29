@@ -9,7 +9,7 @@
                 <td>数量</td>
                 <td>价格</td>
             </tr>
-            <tr v-for="item in courseCart" :key="item.id">
+            <tr v-for="(item,index) in courseCart" :key="item.id">
                 <td><input type="checkbox" v-model="item.isActive"></td>
                 <td>{{item.name}}</td>
                 <td>{{item.price}}</td>
@@ -19,6 +19,10 @@
                     <button @click="add(index)">+</button>
                 </td>
                 <td>{{item.price*item.number}}</td>
+            </tr>
+            <tr>
+                <td>{{isActiveCourse}} / {{allActiveCourse}}</td>
+                <td>{{allPrice}}</td>
             </tr>
         </table>
     </div>
@@ -31,11 +35,41 @@
         props: ['courseCart'],
         methods:{
             minus(index){
-                this.courseCart[index].number -= 1;
+                let number = this.courseCart[index].number;
+                if(number > 1){
+                    this.courseCart[index].number -= 1;
+                }
+                else {
+                    if(window.confirm('确定要删除么')) {
+                        this.$emit('removeItem',this.courseCart[index]);
+                        // console.log('删除');
+                    }
+                    else {
+                        // console.log('不删除');
+                    }
+                }
             },
             add(index){
                 this.courseCart[index].number += 1;
             },
+        },
+        computed:{
+            isActiveCourse() {
+              return this.courseCart.filter(item => item.isActive).length
+            },
+            allActiveCourse() {
+              // console.log(this.courseCart)
+              return this.courseCart.length
+            },
+            allPrice() {
+                let num = 0;
+                this.courseCart.forEach(item => {
+                    if(item.isActive){
+                        num += item.price * item.number
+                    }
+                })
+                return num;
+            }
         }
     }
 </script>
