@@ -1,6 +1,8 @@
 <template>
     <div>
         this is bar, {{id}}
+        <h4>url add /test，可显示嵌套路由</h4>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -9,7 +11,7 @@
         name: "Bar",
         props: ['id'],
         mounted(){
-            console.log(this.id)
+            // console.log(this.id)
         }
         /*
         created() {

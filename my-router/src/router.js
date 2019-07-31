@@ -2,7 +2,10 @@ import  Vue from 'vue';
 import VueRouter from 'vue-router';
 // 定义路由组件
 import Foo  from './views/Foo.vue';
-import Bar from './views/Bar.vue'
+import Bar from './views/Bar.vue';
+import Test from './views/Test.vue';
+import Single from './views/Single.vue';
+import FooMore from './views/FooMore.vue';
 // import HelloWorld from './components/HelloWorld.vue';
 
 // 安装路由到vue
@@ -16,16 +19,30 @@ const routers = [
         redirect: '/foo'
     },
     {
+        path: '/single',
+        component: Single
+    },
+    {
         path: '/foo',
         name:'foo',
-        component: Foo
+        // 嵌套命名视图
+        components: {
+            default: Foo,
+            foomore: FooMore
+        },
     },
     {
         path: '/bar/:id',
-        name: 'far',
-        // 接收props
+        // 使组件页接收props参数，获取this.$route的数据
         props: true,
-        component: Bar
+        component: Bar,
+        // 嵌套路由
+        children: [
+            {
+                path: 'test',
+                component: Test
+            }
+        ]
     }
 ]
 
