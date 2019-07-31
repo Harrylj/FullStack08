@@ -21,8 +21,10 @@ const routers = [
         component: Foo
     },
     {
-        path: '/bar',
-        name: 'bar',
+        path: '/bar/:id',
+        name: 'far',
+        // 接收props
+        props: true,
         component: Bar
     }
 ]

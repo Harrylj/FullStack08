@@ -1,12 +1,21 @@
 <template>
     <div>
-        this is bar
+        this is bar, {{id}}
     </div>
 </template>
 
 <script>
     export default {
         name: "Bar",
+        props: ['id'],
+        mounted(){
+            console.log(this.id)
+        }
+        /*
+        created() {
+            console.log(this.$route)
+        }
+        */
         /*
         computed: {
             username () {
