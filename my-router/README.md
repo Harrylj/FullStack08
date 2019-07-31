@@ -1,6 +1,7 @@
 # my-router
-2-2 02课 Vue-router&Vuex （2019.3.18）52:00
-2-2 02课 Vue-router&Vuex （2019.3.18）34:00
+2-2 02课 Vue-router&Vuex （2019.7.31）1.34:00
+2-2 02课 Vue-router&Vuex （2019.7.30）52:00
+2-2 02课 Vue-router&Vuex （2019.7.28）34:00
 
 ## Project setup
 ```
