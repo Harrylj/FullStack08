@@ -32,7 +32,6 @@
                     : this.$router.push('/')
             }
         }
-
          */
     }
 </script>
