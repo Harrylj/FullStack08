@@ -60,6 +60,7 @@ export default {
   methods: {
     // 登录函数
     handleLogin(e) {
+      console.log('store: ',this.$store)
       // 组织表单的默认提交行为
       e.preventDefault();
       // 登录请求
@@ -72,11 +73,14 @@ export default {
               this.$router.push(path);
               console.log(path)
             }
-            else{
-              console.log(2)
-            }
+            console.log('已登录了吗,code:',code)
+            
+            // else{
+            //   console.log('code:',code)
+            // }
           })
           .catch(error => {
+            console.log(3)
             // 有错误发生或者登陆失败
             // 登陆失败，弹出提示信息
             const toast = this.$createToast({

@@ -22,6 +22,9 @@ export default new Vuex.Store({
           commit('setLoginState',true);
           localStorage.setItem("token",token)
         }
+        else {
+          console.log('登录失败!')
+        }
         return code;
       });
     }
